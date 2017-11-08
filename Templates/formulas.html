@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Telefunken formulas</title>
+    <link rel="stylesheet" href="../static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="../static/js/index.js"></script>
+</head>
+<body>
+
+<ul id="nav_bar" class="nav-bar">
+    <li id="tele-tab" class="tele-tab">Telefunken</li>
+  <li id="home"><a class="nav-tab" href="/">Home</a></li>
+  <li id="formulas"><a class="nav-tab active" href="#">Formulas</a></li>
+  <li id="about"><a class="nav-tab" href="/about">About</a></li>
+</ul>
+
+<div id="load_file" class="formulas_box">
+    <h2>Select file to upload</h2>
+
+    <form id="my_form" class="form"  method="post" enctype="multipart/form-data">
+    <input type="file" id="rdsat_csv" name="rdsat" accept=".csv">
+    </form>
+
+    <div id="select-formula" class="rb-formula">
+        <h2>Select formula(s) to apply</h2>
+        <p>Button options placeholder</p>
+    </div>
+
+    <div class="button-box">
+        <button id="submit_button" class="button trigger noHover" disabled>Submit</button>
+    </div>
+
+    <div id="progress" class="progress-box" hidden>
+        <div id="progress_bar" class="progress-bar"></div>
+    </div>
+
+    <div id="results_box" class="res-box" hidden>
+    <h2>Telefunken calculation results</h2>
+    <div id="telefunken" class="res-spot">
+        <div id="tele_tab" class="res-tab">
+            <div id="tele_txt" class="res-txt">Results</div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+<footer class="footer">
+  <p>Website developed by Maisha Jauernig
+      <a class="footer-txt" href="mailto:mjauernig@unl.edu">mjauernig@unl.edu</a>
+      - find me on <a class="footer-txt" href="https://github.com/dataOtter">Github</a></p>
+</footer>
+
+</body>
+</html>
