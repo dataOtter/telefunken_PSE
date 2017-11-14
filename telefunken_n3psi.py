@@ -70,6 +70,6 @@ def run_telefunken(filepath, omega=256000, N=1000, max_iterations=1000, hash_mis
         if abs(N - new_N) < 0.1 or counter > max_iterations:
             converged = True
         N = new_N
-        print(N)
+        #print(N)
 
-    return round(N, 2)
+    return round(N)

@@ -6,7 +6,7 @@ def get_new_N_guess(data_dict, Dtilde, N, omega, S, Ds):
     Xpsis = []
     denominator = 0
     # numerator and denominator
-    for coupon in data_dict['data']:  # for each coupon/participant in the sample,
+    for coupon in data_dict['all_coupons']:  # for each coupon/participant in the sample,
         # numerator
         # get the hashes that the participant provided that are not part of the participant's family
         Rs.extend(t.get_my_nonrdsstory_but_friends_hashes(coupon, data_dict))
@@ -26,17 +26,20 @@ def get_new_N_guess(data_dict, Dtilde, N, omega, S, Ds):
             Z2 = Dtilde / (t.get_my_network_size(coupon, data_dict) - 1)
             denominator += 1 / (Z1 * Z2 + 1)
 
-    return numerator / denominator
+    if denominator == 0:
+        return "Estimation failed because number of matches was 0"
+    else:
+        return numerator / denominator
 
 
-def run_telefunken(filepath, omega=25, N=1000, max_iterations=1000, hash_missing_code='NA'):
+def run_telefunken(filepath, omega=256000, N=1000, max_iterations=1000, hash_missing_code='NA'):
     data_dict = t.init_operations(filepath, hash_missing_code)
     Dtilde = t.get_harmonic_mean(data_dict)
     S = data_dict['num_resp']
 
     sum_net_size = 0
     for row in data_dict['data']:
-        sum_net_size += row[1]
+        sum_net_size += int(row[1])
     Ds = sum_net_size / S
 
     #omega = t.get_hashspace_size(data_dict)
@@ -49,6 +52,6 @@ def run_telefunken(filepath, omega=25, N=1000, max_iterations=1000, hash_missing
         if abs(N - new_N) < 0.1 or counter > max_iterations:
             converged = True
         N = new_N
-        print(N)
+        #print(N)
 
-    return round(N, 2)
+    return round(N)

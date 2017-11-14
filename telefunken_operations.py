@@ -47,9 +47,14 @@ def get_entropy_of_hashes(info_dict):
     return accum
 
 
-def get_hashspace_size(info_dict):
+def get_hashspace_size_entropy_based(info_dict):
     sz = 2.0 * math.pow(2.0, get_entropy_of_hashes(info_dict))
     return sz
+
+
+def get_hashspace_size(info_dict):
+    psi_S = len(info_dict['hash_to_prob_dict'])
+    return psi_S**5
 
 
 def get_hash_to_prob_dict(info_dict):

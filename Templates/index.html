@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Telefunken</title>
+    <title>Home</title>
 
     <link rel="stylesheet" href="../static/css/index.css">
 
@@ -14,14 +14,26 @@
 <body>
 
 <ul id="nav_bar" class="nav-bar">
-    <li id="tele-tab" class="tele-tab">Telefunken</li>
+    <li id="tele-tab" class="tele-tab">Telefunken PSE</li>
   <li id="home-tb"><a class="nav-tab active" href="#">Home</a></li>
-  <li id="formulas-tb"><a class="nav-tab" href="/formulas">Formulas</a></li>
+  <li id="formulas-tb"><a class="nav-tab" href="/formulas">Estimators</a></li>
   <li id="about-tb"><a class="nav-tab" href="/about">About</a></li>
 </ul>
 
 <div id="home" class="home-box">
-    <p>Home placeholder</p>
+    <p>This website provides tools to generate population size estimates from <a class="about-txt"
+           href="http://www.respondentdrivensampling.org" target="_blank">RDS</a> and uniform random samples.
+        The software accepts an augmented RDSAT file format as input.  The original RDSAT file format is described
+        <a class="about-txt" href="http://www.respondentdrivensampling.org/reports/RDSAT_7.1-Manual_2012-11-25.pdf"
+           target="_blank">here</a>.
+    </p>
+
+    <img src="../static/original.jpg" alt="Original RDSAT file format" class="image">
+
+    <p> This format is extended as follows:</p>
+
+    <img src="../static/mod3.png" alt="Extended RDSAT file format" class="image">
+
 </div>
 
 <footer class="footer">

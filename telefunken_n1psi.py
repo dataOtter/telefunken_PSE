@@ -25,7 +25,10 @@ def get_new_N_guess(data_dict, Dtilde, N, omega, S):
             Z2 = Dtilde / (t.get_my_network_size(coupon, data_dict) - 1)
             denominator += 1 / (Z1 * Z2 + 1)
 
-    return numerator / denominator
+    if denominator == 0:
+        return "Estimation failed because number of matches was 0"
+    else:
+        return numerator / denominator
 
 
 def run_telefunken(filepath, omega=256000, N=1000, max_iterations=1000, hash_missing_code='NA'):
@@ -43,6 +46,6 @@ def run_telefunken(filepath, omega=256000, N=1000, max_iterations=1000, hash_mis
         if abs(N - new_N) < 0.1 or counter > max_iterations:
             converged = True
         N = new_N
-        print(N)
+        #print(N)
 
-    return round(N, 2)
+    return round(N)

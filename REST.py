@@ -1,9 +1,9 @@
 import flask as f
 import os
 from werkzeug.utils import secure_filename
-import telefunken_n3psi as t
+import telefunken_run as t
 
-UPLOAD_FOLDER = 'C:\\Users\\Maisha\\Dropbox\\MB_dev\\Telefunken\\testfiles\\downloaded'
+UPLOAD_FOLDER = 'C:\\Users\\Maisha\\Dropbox\\MB_dev\\telefunken_PSE\\testfiles\\downloaded'
 ALLOWED_EXTENSIONS = ['csv']
 
 app = f.Flask(__name__)
@@ -50,9 +50,14 @@ def show_result():
         except Exception as e:
             return f.jsonify({"result": str(e) + "\nError saving file"})
 
-    result = t.run_telefunken(filepath)
+        formulas_selected = f.request.form['funcs_selected'].split(',')
 
-    return f.jsonify({"result": result})
+        result = t.run_selected_formulas(filepath, formulas_selected)
+
+    for entry in result:
+        print(result[entry])
+
+    return f.jsonify({"result": result, "filename": name})
 
 
 def allowed_file(filename):

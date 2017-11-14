@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Telefunken formulas</title>
+    <title>Estimators</title>
     <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/formulas.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -12,41 +13,90 @@
 <body>
 
 <ul id="nav_bar" class="nav-bar">
-    <li id="tele-tab" class="tele-tab">Telefunken</li>
+    <li id="tele-tab" class="tele-tab">Telefunken PSE</li>
   <li id="home"><a class="nav-tab" href="/">Home</a></li>
-  <li id="formulas"><a class="nav-tab active" href="#">Formulas</a></li>
+  <li id="formulas"><a class="nav-tab active" href="#">Estimators</a></li>
   <li id="about"><a class="nav-tab" href="/about">About</a></li>
 </ul>
 
 <div id="load_file" class="formulas_box">
-    <h2>Select file to upload</h2>
 
     <form id="my_form" class="form"  method="post" enctype="multipart/form-data">
+        <h2>Select extended RDSAT file to analyze</h2>
     <input type="file" id="rdsat_csv" name="rdsat" accept=".csv">
     </form>
 
-    <div id="select-formula" class="rb-formula">
+    <div id="select_formula" class="rb-formula" hidden>
         <h2>Select formula(s) to apply</h2>
-        <p>Button options placeholder</p>
+
+
+        <div id='tab_n1psi' data-value="1" class="rb-tab">
+            <div id="spot_n1psi" class="rb-spot">
+                <div id="txt_n1psi" class="rb-txt">
+                    N<sub>1</sub><sup>&Psi;</sup>
+                </div>
+            </div>
+        </div>
+
+        <div id='tab_n2psi' data-value="2" class="rb-tab">
+                <div id="txt_n2psi" class="rb-txt">
+                    N<sub>2</sub><sup>&Psi;</sup>
+                </div>
+        </div>
+
+        <div id='tab_n3psi' data-value="3" class="rb-tab">
+            <div id="spot_n3psi" class="rb-spot">
+                <div id="txt_n3psi" class="rb-txt">
+                    N<sub>3</sub><sup>&Psi;</sup>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <div class="button-box">
         <button id="submit_button" class="button trigger noHover" disabled>Submit</button>
     </div>
 
-    <div id="progress" class="progress-box" hidden>
+    <!--<div id="progress" class="progress-box" hidden>
         <div id="progress_bar" class="progress-bar"></div>
+    </div>-->
+
+    <div id="spinner_box" class="spinner-box" hidden>
+        <div id="spinner" class="spinner"></div>
+        <p>Calculating...</p>
     </div>
 
-    <div id="results_box" class="res-box" hidden>
-    <h2>Telefunken calculation results</h2>
-    <div id="telefunken" class="res-spot">
-        <div id="tele_tab" class="res-tab">
-            <div id="tele_txt" class="res-txt">Results</div>
+    <div id="results" class="res" hidden>
+        <h1>Telefunken Population Size Estimate</h1>
+        <h2 id="filename">Filename</h2>
+        <div id="results_1" class="res-box">
+            <h2>N<sub>1</sub><sup>&Psi;</sup></h2>
+            <div id="telefunken1" class="res-spot">
+                <div id="tele_tab1" class="res-tab">
+                    <div id="tele_txt1" class="res-txt"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="results_2" class="res-box">
+            <h2>N<sub>2</sub><sup>&Psi;</sup></h2>
+            <div id="telefunken2" class="res-spot">
+                <div id="tele_tab2" class="res-tab">
+                    <div id="tele_txt2" class="res-txt"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="results_3" class="res-box">
+            <h2>N<sub>3</sub><sup>&Psi;</sup></h2>
+            <div id="telefunken3" class="res-spot">
+                <div id="tele_tab3" class="res-tab">
+                    <div id="tele_txt3" class="res-txt"></div>
+                </div>
+            </div>
         </div>
     </div>
-
-</div>
 
 </div>
 
