@@ -4,7 +4,6 @@ $(document).ready(function(){
 
     $('.formulas_box').on('click', ".rb-tab", function() { formula_selector(this) })
 
-
     $(".formulas_box").on('click', '#submit_button', function() {
 
         var formData = new FormData($('#my_form')[0]);
@@ -86,6 +85,8 @@ function show_results(data) {
     }
 
     $('#filename').empty().append(data.filename);
+
+    $('#hashsize').empty().append("Estimated hash-space-size: " + data.omega);
 }
 
 

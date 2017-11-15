@@ -1,6 +1,7 @@
 import csv
 import copy
 import math
+from scipy.special import lambertw
 
 
 def get_csv_as_list(full_path):
@@ -55,6 +56,13 @@ def get_hashspace_size_entropy_based(info_dict):
 def get_hashspace_size(info_dict):
     psi_S = len(info_dict['hash_to_prob_dict'])
     return psi_S**5
+
+
+def get_omega(info_dict):
+    S = info_dict['num_resp']
+    psiS = len(set(get_all_participant_hashes(info_dict)))
+    omega = (S * psiS) / (psiS * lambertw([-(math.exp(-S / psiS) * S) / psiS]) + S)
+    return int(omega[0])
 
 
 def get_hash_to_prob_dict(info_dict):
@@ -308,7 +316,7 @@ def init_operations(filepath, hash_missing_code):
     return info_dict
 
 
-def run_all_on_testcsv():
+def run_all_on_csv():
     coupon = '1010'
     seed = '1001'
     hash_code = 'x4'
@@ -333,4 +341,4 @@ def run_all_on_testcsv():
     #print(get_my_nonrdsstory_inrespondents_hashes(coupon, info_dict))
     #print(get_my_nonrdsstory_inrespondents_diffseed_hashes(coupon, info_dict))
 
-#run_all_on_testcsv()
+#run_all_on_csv()

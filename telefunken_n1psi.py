@@ -31,12 +31,9 @@ def get_new_N_guess(data_dict, Dtilde, N, omega, S):
         return numerator / denominator
 
 
-def run_telefunken(filepath, omega=256000, N=1000, max_iterations=1000, hash_missing_code='NA'):
-    data_dict = t.init_operations(filepath, hash_missing_code)
+def run_telefunken(data_dict, omega, N=1000, max_iterations=1000):
     Dtilde = t.get_harmonic_mean(data_dict)
     S = data_dict['num_resp']
-
-    #omega = t.get_hashspace_size(data_dict)
 
     converged = False
     counter = 0

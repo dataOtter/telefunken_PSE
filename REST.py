@@ -53,11 +53,11 @@ def show_result():
         formulas_selected = f.request.form['funcs_selected'].split(',')
 
         result = t.run_selected_formulas(filepath, formulas_selected)
+        print(result)
+        omega = result['omega']
+        del result['omega']
 
-    for entry in result:
-        print(result[entry])
-
-    return f.jsonify({"result": result, "filename": name})
+    return f.jsonify({"result": result, "filename": name, "omega": omega})
 
 
 def allowed_file(filename):
