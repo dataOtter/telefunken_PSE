@@ -340,5 +340,3 @@ def run_all_on_csv():
     #print(get_my_nonrdsstory_but_friends_hashes(coupon, info_dict))
     #print(get_my_nonrdsstory_inrespondents_hashes(coupon, info_dict))
     #print(get_my_nonrdsstory_inrespondents_diffseed_hashes(coupon, info_dict))
-
-#run_all_on_csv()

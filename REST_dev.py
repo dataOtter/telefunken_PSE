@@ -36,19 +36,19 @@ def show_result():
     if f.request.method == 'POST':
         # check if the post request has the file part
         if 'rdsat' not in f.request.files:  # this should never hit as I check for it in jQuery
-            return f.jsonify({"result": 'No file submitted'})
+            return f.jsonify({"filename": 'No file submitted'})
 
         file = f.request.files['rdsat']
         name = secure_filename(file.filename)
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], name)
 
         if name == ''or not allowed_file(name):
-            return f.jsonify({"result": "Please upload a CSV file"})
+            return f.jsonify({"filename": "Please upload a CSV file"})
 
         try:
             file.save(filepath)
         except Exception as e:
-            return f.jsonify({"result": str(e) + "\nError saving file"})
+            return f.jsonify({"filename": str(e) + "\nError saving file"})
 
         formulas_selected = f.request.form['funcs_selected'].split(',')
 
